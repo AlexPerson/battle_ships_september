@@ -21,6 +21,9 @@ class BattleshipWeb < Sinatra::Base
 
   get '/board' do
     @board = Board.new(Cell)
+    @coordinates = params[:coordinates]
+    @ship_type = params[:ship_type]
+    @orientation = params[:orientation]
   	erb :board
   end
 
