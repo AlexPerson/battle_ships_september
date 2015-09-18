@@ -39,14 +39,22 @@ class Board
 		[*"A".."J"].each do |l|
 			[*1..10].each do |n|
 				if grid["#{l}#{n}".to_sym].content.is_a?(Water)
-					blue_div = "<div style='height:40px; width:40px; background-color:#0099FF; border:1px solid white; border-radius: 20px; display: inline-block'></div>"
-					result += blue_div
+					if grid["#{l}#{n}".to_sym].hit == true
+						yellow_div = "<div style='height:40px; width:40px; background-color:#DFDF5E; border:1px solid white; border-radius: 20px; display: inline-block'></div>"
+						result += yellow_div
+					else
+						blue_div = "<div style='height:40px; width:40px; background-color:#0099FF; border:1px solid white; border-radius: 20px; display: inline-block'></div>"
+						result += blue_div
+					end
 				else
-				 	green_div = "<div style='height:40px; width:40px; background-color:#009933; border:1px solid white; border-radius: 20px; display: inline-block'></div>"
-					result += green_div
+					if grid["#{l}#{n}".to_sym].hit == true
+						red_div = "<div style='height:40px; width:40px; background-color:#FF0000; border:1px solid white; border-radius: 20px; display: inline-block'></div>"
+						result += red_div
+					else
+						green_div = "<div style='height:40px; width:40px; background-color:#009933; border:1px solid white; border-radius: 20px; display: inline-block'></div>"
+						result += green_div
+					end
 				end 
-				# @grid["#{l}#{n}".to_sym] = content.new
-				# @grid["#{l}#{n}".to_sym].content = Water.new
 			end
 		end
 		result += "</div>"

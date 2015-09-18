@@ -15,6 +15,10 @@ feature 'Starting a new game' do
 
   scenario 'a test page that has a grid with ships and water in other cells' do
     visit '/test-page'
-    expect(page).to have_css("div", count: 100)
+    expect(page).to have_css("div[style='height:40px; width:40px; background-color:#FF0000; border:1px solid white; border-radius: 20px; display: inline-block']", count: 2)
+    expect(page).to have_css("div[style='height:40px; width:40px; background-color:#DFDF5E; border:1px solid white; border-radius: 20px; display: inline-block']", count: 2)
+    expect(page).to have_css("div[style='height:40px; width:40px; background-color:#009933; border:1px solid white; border-radius: 20px; display: inline-block']", count: 5)
+    expect(page).to have_css("div[style='height:40px; width:40px; background-color:#0099FF; border:1px solid white; border-radius: 20px; display: inline-block']", count: 91)
   end
+
 end
