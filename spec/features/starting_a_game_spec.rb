@@ -12,4 +12,9 @@ feature 'Starting a new game' do
     click_button 'New Game'
     expect(page).to have_content "Alex's game:"
   end
+
+  scenario 'a test page that has a grid with ships and water in other cells' do
+    visit '/test-page'
+    expect(page).to have_css("div", count: 100)
+  end
 end

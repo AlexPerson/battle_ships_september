@@ -27,6 +27,19 @@ class BattleshipWeb < Sinatra::Base
   	erb :board_setup
   end
 
+  get '/test-page' do
+  	@board = Board.new(Cell)
+  	@board.place(Ship.destroyer, :A1)
+  	@board.place(Ship.battleship, :E1)
+  	@board.shoot_at(:A1)
+  	@board.shoot_at(:A2)
+  	@board.shoot_at(:B1)
+  	@board.shoot_at(:B2)
+  	# @my_board = "<div style='height:100px; width:200px; background-color:#bfc4bf; boarder:1px solid white'></div><div style='height:100px; width:200px; background-color:#bfc4bf; boarder:1px solid white'></div>"
+  	@my_board = @board.show_my_board
+  	erb :test_page
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 

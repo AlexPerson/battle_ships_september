@@ -34,6 +34,25 @@ class Board
 		ships.count
 	end
 
+	def show_my_board
+		result = "<div style='width:430'>"
+		[*"A".."J"].each do |l|
+			[*1..10].each do |n|
+				if grid["#{l}#{n}".to_sym].content.is_a?(Water)
+					blue_div = "<div style='height:40px; width:40px; background-color:#0099FF; border:1px solid white; border-radius: 20px; display: inline-block'></div>"
+					result += blue_div
+				else
+				 	green_div = "<div style='height:40px; width:40px; background-color:#009933; border:1px solid white; border-radius: 20px; display: inline-block'></div>"
+					result += green_div
+				end 
+				# @grid["#{l}#{n}".to_sym] = content.new
+				# @grid["#{l}#{n}".to_sym].content = Water.new
+			end
+		end
+		result += "</div>"
+		return result
+	end
+
 private
 
  	def next_coord(coord, orientation)
