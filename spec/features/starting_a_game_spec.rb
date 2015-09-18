@@ -1,19 +1,15 @@
 require 'spec_helper'
 
 feature 'Starting a new game' do
-
-  scenario 'I am asked to enter my name' do
+  scenario 'visiting the homepage that says Welcome to Battleships' do
     visit '/'
-    click_link 'New Game'
-    expect(page).to have_content "What's your name?"
+    expect(page).to have_content 'Welcome to Battleships!'
   end
 
-  scenario 'A board is rendered in the browser when a name is entered' do
-  	visit '/'
-  	click_link 'New Game'
-  	fill_in('name', :with => 'Harry')
-  	click_button 'Submit'
-  	expect(page).to have_content 'Im a board'
+  scenario 'homepage asks for name in form and submit button takes you to next page' do
+    visit '/'
+    fill_in('player_name', :with => 'Alex')
+    click_button 'New Game'
+    expect(page).to have_content "Alex's game:"
   end
-
 end

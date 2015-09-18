@@ -6,25 +6,25 @@ require_relative 'game'
 require_relative 'cell'
 require_relative 'board'
 
+
 class BattleshipWeb < Sinatra::Base
   
+  enable :sessions
+
   set :views, proc { File.join(root, '..', 'views')}
 
   get '/' do
-    erb :index
+  	erb :index
   end
 
-  get '/name' do
-  	@name = params[:name]
-    erb :name_form
+  post '/board-setup' do
+  	session[:player_name] = params[:player_name]
+  	redirect '/board-setup'
   end
 
-  get '/board' do
-    @board = Board.new(Cell)
-    @coordinates = params[:coordinates]
-    @ship_type = params[:ship_type]
-    @orientation = params[:orientation]
-  	erb :board
+  get '/board-setup' do
+  	@player_name = session[:player_name]
+  	erb :board_setup
   end
 
   # start the server if ruby file executed directly
